@@ -9,48 +9,57 @@
 import UIKit
 
 class DayCollectionCell: UICollectionViewCell {
-    
-    @IBOutlet var label: UILabel!
-    
-    @IBOutlet var markedView: UIView!
-    @IBOutlet var markedViewWidth: NSLayoutConstraint!
-    @IBOutlet var markedViewHeight: NSLayoutConstraint!
+   
+   @IBOutlet var label: UILabel!
+   
+   @IBOutlet var markedView: UIView!
+   @IBOutlet var markedViewWidth: NSLayoutConstraint!
+   @IBOutlet var markedViewHeight: NSLayoutConstraint!
+   
+   var date: Date? {
+      didSet {
+         if date != nil {
+            label.text = "\(date!.day)"
+         } else {
+            label.text = ""
+         }
+      }
+   }
+   
+   var disabled: Bool = false {
+      didSet {
+         if disabled {
+            alpha = 0.4
+         } else {
+            alpha = 1.0
+         }
+      }
+   }
+   
+   var mark: Bool = false {
+      didSet {
+         if mark {
+            markedView!.hidden = false
+         } else {
+            markedView!.hidden = true
+         }
+      }
+   }
+   
+   override func layoutSubviews() {
+      super.layoutSubviews()
 
-    var date: Date? {
-        didSet {
-            if date != nil {
-                label.text = "\(date!.day)"
-            } else {
-                label.text = ""
-            }
-        }
-    }
-    
-    var disabled: Bool = false {
-        didSet {
-            if disabled {
-                alpha = 0.4
-            } else {
-                alpha = 1.0
-            }
-        }
-    }
-    
-    var mark: Bool = false {
-        didSet {
-            if mark {
-                markedView!.hidden = false
-            } else {
-                markedView!.hidden = true
-            }
-        }
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        markedViewWidth!.constant = min(self.frame.width, self.frame.height)
-        markedViewHeight!.constant = min(self.frame.width, self.frame.height)
-        markedView!.layer.cornerRadius = min(self.frame.width, self.frame.height) / 2.0
-    }
+      configMark()
+   }
 
+   private func configMark() {
+      let diameter = min(frame.width, frame.height)
+      let radius = diameter / 2
+      
+      markedViewWidth!.constant = diameter
+      markedViewHeight!.constant = diameter
+      
+      markedView!.layer.cornerRadius = radius
+      markedView.center = CGPoint(x: frame.width/2, y: frame.height/2)
+   }
 }
