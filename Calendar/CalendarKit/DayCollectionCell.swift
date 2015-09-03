@@ -15,6 +15,8 @@ class DayCollectionCell: UICollectionViewCell {
    @IBOutlet var markedView: UIView!
    @IBOutlet var markedViewWidth: NSLayoutConstraint!
    @IBOutlet var markedViewHeight: NSLayoutConstraint!
+
+   var markedViewColor: UIColor = UIColor.purpleColor()
    
    var date: Date? {
       didSet {
@@ -53,6 +55,8 @@ class DayCollectionCell: UICollectionViewCell {
    }
 
    private func configMark() {
+      markedView.backgroundColor = markedViewColor
+
       let diameter = min(frame.width, frame.height)
       let radius = diameter / 2
       

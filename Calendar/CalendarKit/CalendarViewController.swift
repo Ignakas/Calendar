@@ -17,12 +17,14 @@ public protocol CalendarViewDelegate: class {
 public class CalendarViewController : UIViewController {
    // MARK: Outlets
    @IBOutlet weak var collectionView: UICollectionView!
-
    @IBOutlet var monthYearLabel: UILabel!
-   @IBOutlet var nextButton: UIButton!
-   @IBOutlet var previousButton: UIButton!
    
    // MARK: Public
+   public var selectedCellColour: UIColor = UIColor.yellowColor()
+   @IBOutlet public var nextButton: UIButton!
+   @IBOutlet public var previousButton: UIButton!
+   @IBOutlet public weak var topBar: UIView!
+
    public weak var delegate: CalendarViewDelegate?
    private var collectionData = [CalendarLogic]()
    public var baseDate: NSDate? {
@@ -134,6 +136,7 @@ extension CalendarViewController : UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MonthCollectionCell", forIndexPath: indexPath) as! MonthCollectionCell
       
       cell.monthCellDelgate = self
+      cell.markedViewColor = selectedCellColour
       
       cell.logic = collectionData[indexPath.item]
       if cell.logic!.isVisible(selectedDate!) {
