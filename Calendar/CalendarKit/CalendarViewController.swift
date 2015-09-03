@@ -19,10 +19,13 @@ public class CalendarViewController : UIViewController {
    @IBOutlet weak var collectionView: UICollectionView!
 
    @IBOutlet var monthYearLabel: UILabel!
-   @IBOutlet var nextButton: UIButton!
-   @IBOutlet var previousButton: UIButton!
    
    // MARK: Public
+   public var selectedCellColour: UIColor = UIColor.yellowColor()
+   @IBOutlet public var nextButton: UIButton!
+   @IBOutlet public var previousButton: UIButton!
+   @IBOutlet public weak var topBar: UIView!
+   
    public weak var delegate: CalendarViewDelegate?
    private var collectionData = [CalendarLogic]()
    public var baseDate: NSDate? {
@@ -40,7 +43,7 @@ public class CalendarViewController : UIViewController {
                set.insert(CalendarLogic(date: dateIter1))
                set.insert(CalendarLogic(date: dateIter2))
             }
-            collectionData = sorted(Array(set), <)
+            collectionData = Array(set).sort(<)
          }
          
          updateHeader()
@@ -109,16 +112,15 @@ public class CalendarViewController : UIViewController {
    }
    
    private func advance(byIndex: Int, animate: Bool) {
-      var visibleIndexPath = self.collectionView.indexPathsForVisibleItems().first as! NSIndexPath
-      
-      if (visibleIndexPath.item == 0 && byIndex == -1) ||
-         ((visibleIndexPath.item + 1) == collectionView.numberOfItemsInSection(0) && byIndex == 1) {
-            return
+      guard let visibleIndexPath = self.collectionView.indexPathsForVisibleItems().first
+            where (visibleIndexPath.item == 0 && byIndex == -1) ||
+                  ((visibleIndexPath.item + 1) == collectionView.numberOfItemsInSection(0) && byIndex == 1) else {
+         return
       }
       
-      visibleIndexPath = NSIndexPath(forItem: visibleIndexPath.item + byIndex, inSection: visibleIndexPath.section)
-      updateHeader(visibleIndexPath.item)
-      collectionView.scrollToItemAtIndexPath(visibleIndexPath, atScrollPosition: .CenteredHorizontally, animated: animate)
+      let path = NSIndexPath(forItem: visibleIndexPath.item + byIndex, inSection: visibleIndexPath.section)
+      updateHeader(path.item)
+      collectionView.scrollToItemAtIndexPath(path, atScrollPosition: .CenteredHorizontally, animated: animate)
    }
 
 }
@@ -134,7 +136,8 @@ extension CalendarViewController : UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MonthCollectionCell", forIndexPath: indexPath) as! MonthCollectionCell
       
       cell.monthCellDelgate = self
-      
+      cell.markedViewColor = selectedCellColour
+         
       cell.logic = collectionData[indexPath.item]
       if cell.logic!.isVisible(selectedDate!) {
          cell.selectedDate = Date(date: selectedDate!)

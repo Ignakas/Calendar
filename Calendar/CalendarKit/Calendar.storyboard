@@ -36,7 +36,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gea-oy-dUU">
                                                     <rect key="frame" x="0.0" y="0.0" width="601" height="515"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="BSH-yP-hG2">
                                                         <size key="itemSize" width="50" height="50"/>
                                                         <size key="headerReferenceSize" width="50" height="50"/>
@@ -44,7 +44,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="3" maxX="0.0" maxY="3"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DayCollectionCell" id="5zs-Ip-CFS" customClass="DayCollectionCell" customModule="Calendar" customModuleProvider="target">
+                                                        <collectionViewCell multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DayCollectionCell" id="5zs-Ip-CFS" customClass="DayCollectionCell" customModule="Calendar" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -53,7 +53,7 @@
                                                                 <subviews>
                                                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="1kv-CL-aNL" userLabel="markedView">
                                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                        <color key="backgroundColor" red="0.99607843139999996" green="0.16078431369999999" blue="0.31764705879999999" alpha="0.48999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="ULg-Dk-s18"/>
                                                                             <constraint firstAttribute="width" constant="50" id="mQJ-l6-Iaa"/>
@@ -62,13 +62,13 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55v-lL-vJo">
                                                                         <rect key="frame" x="20" y="15" width="10" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
-                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="centerX" secondItem="55v-lL-vJo" secondAttribute="centerX" id="SWP-RR-JwL"/>
                                                                 <constraint firstAttribute="centerX" secondItem="1kv-CL-aNL" secondAttribute="centerX" id="a3w-7e-JHU"/>
@@ -84,7 +84,7 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                     <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WeekHeaderView" id="h1y-GD-3HB" customClass="WeekHeaderView" customModule="Calendar" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="204" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="601" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vp6-sp-PiB">
@@ -210,15 +210,15 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aa-ZC-Zxa">
                                         <rect key="frame" x="281" y="34" width="40" height="19"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGK-Dc-BWi">
                                         <rect key="frame" x="20" y="30" width="30" height="27"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="12"/>
                                         <state key="normal" title="PREV">
-                                            <color key="titleColor" red="0.56078431370000004" green="0.5568627451" blue="0.58039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="retreatToPreviousMonth:" destination="vyf-t2-6sk" eventType="touchUpInside" id="hdY-nk-dSG"/>
@@ -228,15 +228,15 @@
                                         <rect key="frame" x="550" y="29" width="30" height="27"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="12"/>
                                         <state key="normal" title="NEXT">
-                                            <color key="titleColor" red="0.56078431370000004" green="0.5568627451" blue="0.58039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="advanceToFollowingMonth:" destination="vyf-t2-6sk" eventType="touchUpInside" id="ZvG-Ky-jWp"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.44058073219999999" green="0.87314926790000003" blue="0.4053618813" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="QzQ-6Q-MMh" secondAttribute="centerY" id="I5u-We-O6x"/>
                                     <constraint firstAttribute="centerX" secondItem="2aa-ZC-Zxa" secondAttribute="centerX" id="LNZ-f7-Rjm"/>
@@ -273,6 +273,7 @@
                         <outlet property="monthYearLabel" destination="2aa-ZC-Zxa" id="mo2-WX-3UN"/>
                         <outlet property="nextButton" destination="QzQ-6Q-MMh" id="0FI-z2-Qcs"/>
                         <outlet property="previousButton" destination="VGK-Dc-BWi" id="y4y-ls-ym5"/>
+                        <outlet property="topBar" destination="8U8-Fo-DwP" id="1PP-oz-8Qz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZl-2F-AjP" userLabel="First Responder" sceneMemberID="firstResponder"/>

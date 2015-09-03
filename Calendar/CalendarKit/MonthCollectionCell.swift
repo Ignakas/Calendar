@@ -17,6 +17,8 @@ class MonthCollectionCell: UICollectionViewCell {
    @IBOutlet var collectionView: UICollectionView!
    weak var monthCellDelgate: MonthCollectionCellDelegate?
    
+   var markedViewColor: UIColor = UIColor.purpleColor()
+
    var dates = [Date]()
    var previousMonthVisibleDatesCount = 0
    var currentMonthVisibleDatesCount = 0
@@ -76,6 +78,7 @@ extension MonthCollectionCell : UICollectionViewDataSource {
       
       cell.date = (indexPath.item < dates.count) ? date : nil
       cell.mark = (selectedDate == date)
+      cell.markedViewColor = markedViewColor
       
       cell.disabled = (indexPath.item < previousMonthVisibleDatesCount) ||
          (indexPath.item >= previousMonthVisibleDatesCount
@@ -96,7 +99,7 @@ extension MonthCollectionCell : UICollectionViewDelegate {
       return collectionView.dequeueReusableSupplementaryViewOfKind(
          UICollectionElementKindSectionHeader,
          withReuseIdentifier: "WeekHeaderView",
-         forIndexPath: indexPath) as! UICollectionReusableView
+         forIndexPath: indexPath) 
    }
    
    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
