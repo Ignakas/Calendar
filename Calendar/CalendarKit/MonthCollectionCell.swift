@@ -104,7 +104,7 @@ extension MonthCollectionCell : UICollectionViewDelegate {
    
    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
       //return CGSizeMake(collectionView.frame.width/7.0, collectionView.frame.height/7.0)
-      return CGSizeMake(floor(collectionView.frame.width/7.0), floor(collectionView.frame.height/7.0))
+      return CGSizeMake(floor(collectionView.frame.width/8.0), floor(collectionView.frame.height/8.0))
    }
    
    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

@@ -113,8 +113,8 @@ public class CalendarViewController : UIViewController {
    
    private func advance(byIndex: Int, animate: Bool) {
       guard let visibleIndexPath = self.collectionView.indexPathsForVisibleItems().first
-            where (visibleIndexPath.item == 0 && byIndex == -1) ||
-                  ((visibleIndexPath.item + 1) == collectionView.numberOfItemsInSection(0) && byIndex == 1) else {
+            where !(visibleIndexPath.item == 0 && byIndex == -1) &&
+                  !((visibleIndexPath.item + 1) == collectionView.numberOfItemsInSection(0) && byIndex == 1) else {
          return
       }
       
