@@ -59,10 +59,12 @@ class MonthCollectionCell: UICollectionViewCell, UICollectionViewDataSource, UIC
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let nib = UINib(nibName: "DayCollectionCell", bundle: nil)
+        var bundle = NSBundle(forClass: DayCollectionCell.self)
+        let nib = UINib(nibName: "DayCollectionCell", bundle: bundle)
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "DayCollectionCell")
         
-        let headerNib = UINib(nibName: "WeekHeaderView", bundle: nil)
+        bundle = NSBundle(forClass: WeekHeaderView.self)
+        let headerNib = UINib(nibName: "WeekHeaderView", bundle: bundle)
         self.collectionView.registerNib(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "WeekHeaderView")
     }
 

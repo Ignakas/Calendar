@@ -11,20 +11,21 @@ import UIKit
 // 12 months - base date - 12 months
 let kMonthRange = 12
 
-protocol CalendarViewDelegate: class {
+public protocol CalendarViewDelegate: class {
     func didSelectDate(date: NSDate)
 }
 
-class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, MonthCollectionCellDelegate {
+public class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, MonthCollectionCellDelegate {
     
     @IBOutlet var monthYearLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var previousButton: UIButton!
-    weak var delegate: CalendarViewDelegate?
+
+    public weak var delegate: CalendarViewDelegate?
 
     private var collectionData = [CalendarLogic]()
-    var baseDate: NSDate? {
+    public var baseDate: NSDate? {
         didSet {
             collectionData = [CalendarLogic]()
             if baseDate != nil {
@@ -47,7 +48,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
-    var selectedDate: NSDate? {
+    public var selectedDate: NSDate? {
         didSet {
             collectionView.reloadData()
             dispatch_async(dispatch_get_main_queue()){
@@ -59,23 +60,26 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
-    override func awakeFromNib() {
-        let nib = UINib(nibName: "MonthCollectionCell", bundle: nil)
+    override public func awakeFromNib() {
+        let bundle = NSBundle(forClass: MonthCollectionCell.self)
+        let nib = UINib(nibName: "MonthCollectionCell", bundle: bundle)
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "MonthCollectionCell")
     }
     
-    class func instance(baseDate: NSDate, selectedDate: NSDate) -> CalendarView {
-        let calendarView = NSBundle.mainBundle().loadNibNamed("CalendarView", owner: nil, options: nil).first as! CalendarView
+    public class func instance(baseDate: NSDate, selectedDate: NSDate) -> CalendarView {
+        let bundle = NSBundle(forClass: CalendarView.self)
+        let nib = bundle.loadNibNamed("CalendarView", owner: nil, options: nil)
+        let calendarView = nib.first as! CalendarView
         calendarView.selectedDate = selectedDate
         calendarView.baseDate = baseDate
         return calendarView
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionData.count
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MonthCollectionCell", forIndexPath: indexPath) as! MonthCollectionCell
         
@@ -89,21 +93,21 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return collectionView.frame.size
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if (!decelerate) {
             updateHeader()
         }
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         updateHeader()
     }
     
-    func updateHeader() {
+    public func updateHeader() {
         let pageNumber = Int(collectionView.contentOffset.x / collectionView.frame.width)
         updateHeader(pageNumber)
     }
@@ -154,7 +158,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     //MARK: Month cell delegate.
-    func didSelect(date: Date) {
+    public func didSelect(date: Date) {
         selectedDate = date.nsdate
     }
 }

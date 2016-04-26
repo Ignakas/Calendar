@@ -8,18 +8,18 @@
 
 import Foundation
 
-class Date: CustomStringConvertible, Equatable {
+public class Date: CustomStringConvertible, Equatable {
     
-    var day: Int
-    var month: Int
-    var year: Int
+    public var day: Int
+    public var month: Int
+    public var year: Int
     
-    var isToday: Bool {
+    public var isToday: Bool {
         let today = Date(date: NSDate())
         return (isEqual(today) == .OrderedSame)
     }
     
-    func isEqual(date: Date) -> NSComparisonResult {
+    public func isEqual(date: Date) -> NSComparisonResult {
         let selfComposite = (year * 10000) + (month * 100) + day
         let otherComposite = (date.year * 10000) + (date.month * 100) + date.day
         
@@ -32,13 +32,13 @@ class Date: CustomStringConvertible, Equatable {
         }
     }
     
-    init(day: Int, month: Int, year: Int) {
+    public init(day: Int, month: Int, year: Int) {
         self.day = day
         self.month = month
         self.year = year
     }
     
-    init(date: NSDate) {
+    public init(date: NSDate) {
         let part = date.monthDayAndYearComponents
         
         self.day = part.day
@@ -46,15 +46,15 @@ class Date: CustomStringConvertible, Equatable {
         self.year = part.year
     }
     
-    var nsdate: NSDate {
+    public var nsdate: NSDate {
         return NSDate.date(day, month: month, year: year)
     }
     
-    var description: String {
+    public var description: String {
         return "\(day)-\(month)-\(year)"
     }
 }
 
-func ==(lhs: Date, rhs: Date) -> Bool {
+public func ==(lhs: Date, rhs: Date) -> Bool {
     return ((lhs.day == rhs.day) && (lhs.month == rhs.month) && (lhs.year == rhs.year))
 }
